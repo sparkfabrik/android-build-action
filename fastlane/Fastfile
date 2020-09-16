@@ -1,0 +1,22 @@
+default_platform(:android)
+
+platform :android do
+  desc "Assemble debug APK"
+  lane :assemble do
+    gradle(task: "assembleDebug")
+
+    APK_LOCATION = "#{lane_context[SharedValues::GRADLE_APK_OUTPUT_PATH]}"
+    sh("mv", "#{APK_LOCATION}", ENV["OUTPUT_PATH"])
+    sh("mv", ENV["OUTPUT_PATH"], "../")
+
+    if ENV["BROWSERSTACK_UPLOAD"] == 'true'
+      upload_to_browserstack_app_live(
+        browserstack_username: ENV["BROWSERSTACK_USERNAME"],
+        browserstack_access_key: ENV["BROWSERSTACK_ACCESS_KEY"],
+        file_path: ENV["OUTPUT_PATH"]
+      )
+    end
+
+    sh("mv", ENV["OUTPUT_PATH"], "../")
+  end
+end

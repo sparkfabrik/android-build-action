@@ -1,0 +1,29 @@
+name: "Build Android App"
+author: "SparkFabrik"
+branding:
+  icon: 'smartphone'
+  color: 'green'
+description: "Build Android (gradle), export .apk, optional upload to BrowserStack App Live."
+inputs:
+  project-path:
+    description: "Project path"
+    required: true
+  output-path:
+    description: "Output path of apk"
+    required: false
+    default: "output.apk"
+  browserstack-upload:
+    description: "Boolean to tell the Action to upload the .ipa to Browserstack App Live after the build."
+    required: false
+    default: false
+  browserstack-username:
+    description: "Browserstack username (required if browserstack-upload == true)"
+    required: false
+    default: ""
+  browserstack-access-key:
+    description: "Browserstack access key (required if browserstack-upload == true)"
+    required: false
+    default: ""
+runs:
+  using: "node12"
+  main: "dist/index.js"
