@@ -16,7 +16,5 @@ platform :android do
         file_path: ENV["OUTPUT_PATH"]
       )
     end
-
-    sh("mv", ENV["OUTPUT_PATH"], "../")
   end
 end
