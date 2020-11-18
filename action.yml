@@ -12,6 +12,10 @@ inputs:
     description: "Output path of apk"
     required: false
     default: "output.apk"
+  gradle-task:
+    description: "Name of the gradle task to exec"
+    required: false
+    default: "assembleDebug"
   browserstack-upload:
     description: "Boolean to tell the Action to upload the .ipa to Browserstack App Live after the build."
     required: false
