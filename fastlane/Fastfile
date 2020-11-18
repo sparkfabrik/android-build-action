@@ -3,11 +3,13 @@ default_platform(:android)
 platform :android do
   desc "Assemble debug APK"
   lane :assemble do
-    gradle(task: "assembleDebug")
+    gradle(
+      task: ENV["GRADLE_TASK"],
+      project_dir: ENV["PROJECT_PATH"]
+    )
 
     APK_LOCATION = "#{lane_context[SharedValues::GRADLE_APK_OUTPUT_PATH]}"
-    sh("mv", "#{APK_LOCATION}", ENV["OUTPUT_PATH"])
-    sh("cp", ENV["OUTPUT_PATH"], "../")
+    sh("cp", "#{APK_LOCATION}", ENV["OUTPUT_PATH"])
 
     if ENV["BROWSERSTACK_UPLOAD"] == 'true'
       upload_to_browserstack_app_live(
