@@ -5,7 +5,8 @@ platform :android do
   lane :assemble do
     gradle(
       task: ENV["GRADLE_TASK"],
-      project_dir: ENV["PROJECT_PATH"]
+      project_dir: ENV["PROJECT_PATH"],
+      flags: "--no-daemon",
     )
 
     APK_LOCATION = "#{lane_context[SharedValues::GRADLE_APK_OUTPUT_PATH]}"
