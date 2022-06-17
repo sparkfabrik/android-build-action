@@ -4,6 +4,11 @@ This action build Android project, export .apk file as GitHub artifact, with opt
 
 Tested with Ionic, React Native and native android projects.
 
+## New in 1.2.0
+
+- Optional build format: you can build an unsigned APK (`build-type: assemble`) or a signed AAB (`build-type: bundle`). In case of a signed AAB you will also need to provide the `package-name` and the `keystore-content`, `keystore-password` and `keystore-alias`
+- Optional upload to the "internal" track of the Google Play Store: set the `upload-to-play-store` property to `true` and be sure to add the `json-key-data` property as a one-line JSON content of your Key file.
+
 ## Inputs
 
 ### `project-path`

@@ -3,6 +3,10 @@ default_platform(:android)
 platform :android do
   desc "Assemble debug APK"
   lane :assemble do
+    if ENV['INCREMENT_BUILD_NUMBER'] == 'true'
+      increment_version_code()
+    end
+
     gradle(
       task: ENV["GRADLE_TASK"],
       project_dir: ENV["PROJECT_PATH"],
@@ -17,6 +21,70 @@ platform :android do
         browserstack_username: ENV["BROWSERSTACK_USERNAME"],
         browserstack_access_key: ENV["BROWSERSTACK_ACCESS_KEY"],
         file_path: ENV["OUTPUT_PATH"]
+      )
+    end
+
+    if ENV["UPLOAD_TO_PLAY_STORE"] == 'true'
+      upload_to_play_store(
+        apk: ENV["OUTPUT_PATH"],
+        package_name: ENV["ANDROID_PACKAGE_NAME"],
+        release_status: "draft",
+        track: "internal",
+        json_key_data: ENV["PLAY_STORE_JSON_KEY_DATA"],
+      )
+    end
+  end
+
+  desc "Bundle release AAB"
+  lane :bundle do
+    if ENV['INCREMENT_BUILD_NUMBER'] == 'true'
+      previous_build_number = google_play_track_version_codes(
+        package_name: ENV["PACKAGE_NAME"],
+        track: "internal",
+        json_key_data: ENV["PLAY_STORE_JSON_KEY_DATA"],
+      )[0]
+
+      current_build_number = previous_build_number + 1
+      
+      increment_version_code(
+        version_code: current_build_number        
+      )
+    end
+
+    puts "Gradle task: #{ENV["GRADLE_TASK"]}"
+    sh("ls", "-la", "..")
+    sh("ls", "-la")
+
+    gradle(
+      task: ENV["GRADLE_TASK"],
+      project_dir: ENV["PROJECT_PATH"],
+      flags: "--no-daemon",
+      properties: {
+        "android.injected.signing.store.file" => File.join(Dir.pwd, "..", "keystore.jks"),
+        "android.injected.signing.store.password" => ENV["KEYSTORE_PASSWORD"],
+        "android.injected.signing.key.alias" => ENV["KEYSTORE_ALIAS"],
+        "android.injected.signing.key.password" => ENV["KEYSTORE_PASSWORD"],
+      }
+    )
+
+    AAB_LOCATION = "#{lane_context[SharedValues::GRADLE_AAB_OUTPUT_PATH]}"
+    sh("cp", "#{AAB_LOCATION}", ENV["OUTPUT_PATH"])
+
+    if ENV["BROWSERSTACK_UPLOAD"] == 'true'
+      upload_to_browserstack_app_live(
+        browserstack_username: ENV["BROWSERSTACK_USERNAME"],
+        browserstack_access_key: ENV["BROWSERSTACK_ACCESS_KEY"],
+        file_path: ENV["OUTPUT_PATH"]
+      )
+    end
+
+    if ENV["UPLOAD_TO_PLAY_STORE"] == 'true'
+      upload_to_play_store(
+        aab: ENV["OUTPUT_PATH"],
+        package_name: ENV["PACKAGE_NAME"],
+        release_status: "draft",
+        track: "internal",
+        json_key_data: ENV["PLAY_STORE_JSON_KEY_DATA"],
       )
     end
   end

@@ -3,19 +3,46 @@ author: "SparkFabrik"
 branding:
   icon: 'smartphone'
   color: 'green'
-description: "Build Android (gradle), export .apk, optional upload to BrowserStack App Live."
+description: "Build Android (gradle), export .apk or .aab, optional upload to Play Store, optional upload to BrowserStack App Live."
 inputs:
+  build-type:
+    description: "You can build an unsigned APK (assemble) or a signed AAB (bundle)."
+    required: false
+    default: "assemble"
+  gradle-task:
+    description: "Name of the gradle task to exec (eg. assembleDebug, assembleRelease, bundleRelease)"
+    required: false
+    default: "assembleDebug"
+  increment-build-number:
+    description: "Increment build number"
+    required: false
+    default: false
+  package-name:
+    description: "Package name"
+    required: false
+  keystore-content:
+    description: "Keystore file content as base64 encoded string"
+    required: false
+  keystore-password:
+    description: "Keystore password"
+    required: false
+  keystore-alias:
+    description: "Keystore alias"
+    required: false
+  json-key-data:
+    description: "JSON keystore file content"
+    required: false
+  upload-to-play-store:
+    description: "Upload to Play Store"
+    required: false
+    default: false
   project-path:
     description: "Project path"
     required: true
   output-path:
-    description: "Output path of apk"
+    description: "Output path of the build"
     required: false
     default: "output.apk"
-  gradle-task:
-    description: "Name of the gradle task to exec"
-    required: false
-    default: "assembleDebug"
   browserstack-upload:
     description: "Boolean to tell the Action to upload the .ipa to Browserstack App Live after the build."
     required: false
