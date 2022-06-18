@@ -1,0 +1,2 @@
+package_name ENV["ANDROID_PACKAGE_NAME"]
+json_key_data_raw ENV["PLAY_STORE_JSON_KEY_DATA"]
