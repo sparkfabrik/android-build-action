@@ -55,6 +55,10 @@ inputs:
     description: "Browserstack access key (required if browserstack-upload == true)"
     required: false
     default: ""
+  fastlane-env:
+    description: "Name of the env file name to pass to fastlane --env"
+    required: false
+    default: ""
 runs:
   using: "node16"
   main: "dist/index.js"

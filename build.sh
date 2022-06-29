@@ -15,4 +15,11 @@ cp -r ${script_path}/Gemfile ./
 
 bundle install
 
-fastlane android $BUILD_TYPE
+# If the variable FASTLANE_ENV is set then run fastlane with the --env equal to the variable.
+if [ -n "${FASTLANE_ENV}" ]; then
+    echo "Running fastlane with environment: ${FASTLANE_ENV}"
+    fastlane --env ${FASTLANE_ENV} android $BUILD_TYPE
+else
+    echo "Running fastlane"
+    fastlane android $BUILD_TYPE
+fi
