@@ -30,9 +30,9 @@ fi
 # otherwise use latest
 if [ -n "${BUNDLER_VERSION}" ]; then
     echo "Running bundler with version: ${BUNDLER_VERSION}"
-    rvm gem install bundler:${BUNDLER_VERSION} -NV
+    gem install bundler:2.3.26 -NV
 else
-    sudo gem install bundler -NV
+    gem install bundler -NV
 fi
 
 
