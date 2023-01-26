@@ -11,22 +11,22 @@ fi
 
 # If RUBY_VERSION is set, then latest RVM is installed and the specified version of Ruby will be used
 if [ -n "${RUBY_VERSION}" ]; then
-    sudo apt-get update 
-    sudo apt-get install git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libxml2-dev libxslt1-dev libcurl4-openssl-dev libffi-dev
+    # sudo apt-get update 
+    # sudo apt-get install git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libxml2-dev libxslt1-dev libcurl4-openssl-dev libffi-dev
     
-    git clone https://github.com/rbenv/rbenv.git ~/.rbenv
-    echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
-    echo 'eval "$(rbenv init -)"' >> ~/.bashrc
-    exec $SHELL
+    # git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+    # echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
+    # echo 'eval "$(rbenv init -)"' >> ~/.bashrc
+    # exec $SHELL
     
-    git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
-    echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> ~/.bashrc
-    exec $SHELL
+    # git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
+    # echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> ~/.bashrc
+    # exec $SHELL
 
-    rbenv -v
-    rbenv install ${RUBY_VERSION}
-    rbenv global ${RUBY_VERSION}
-    ruby -v
+    # rbenv -v
+    # rbenv install ${RUBY_VERSION}
+    # rbenv global ${RUBY_VERSION}
+    # ruby -v
 
     # sudo apt-get install software-properties-common
     # sudo apt-add-repository -y ppa:rael-gc/rvm

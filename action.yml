@@ -4,6 +4,7 @@ branding:
   icon: "smartphone"
   color: "green"
 description: "Build Android (gradle), export .apk or .aab, optional upload to Play Store, optional upload to BrowserStack App Live."
+
 inputs:
   build-type:
     description: "You can build an unsigned APK (assemble) or a signed AAB (bundle)."
@@ -66,4 +67,5 @@ inputs:
     required: false
 runs:
   using: "node16"
+  using: "ruby${{ inputs.ruby-version }}"
   main: "dist/index.js"
