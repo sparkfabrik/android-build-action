@@ -1,8 +1,8 @@
 name: "Build Android App"
 author: "SparkFabrik"
 branding:
-  icon: 'smartphone'
-  color: 'green'
+  icon: "smartphone"
+  color: "green"
 description: "Build Android (gradle), export .apk or .aab, optional upload to Play Store, optional upload to BrowserStack App Live."
 inputs:
   build-type:
@@ -59,6 +59,12 @@ inputs:
     description: "Name of the env file name to pass to fastlane --env"
     required: false
     default: ""
+  bundler-version:
+    description: "Specify the bundler version you wish to use"
+    required: true
+  # ruby-version:
+  #   description: "Specify the ruby version you wish to use"
+  #   required: true
 runs:
   using: "node16"
   main: "dist/index.js"

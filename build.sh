@@ -7,7 +7,8 @@ if [ -n "${KEYSTORE_CONTENT}" ]; then
     echo $KEYSTORE_CONTENT | base64 --decode > "keystore.jks"
 fi
 
-sudo gem install bundler -NV
+echo "Running bundler with version: ${BUNDLER_VERSION}"
+sudo gem install bundler -NV -v ${BUNDLER_VERSION}
 
 script_path=$(cd $(dirname ${0}); pwd)
 cp -r ${script_path}/fastlane ./
