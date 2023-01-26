@@ -23,6 +23,7 @@ if [ -n "${RUBY_VERSION}" ]; then
     echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> ~/.bashrc
     exec $SHELL
 
+    rbenv -v
     rbenv install ${RUBY_VERSION}
     rbenv global ${RUBY_VERSION}
     ruby -v
