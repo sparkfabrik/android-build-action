@@ -6,8 +6,10 @@ async function run() {
     if (!["assemble", "bundle"].includes(core.getInput("build-type"))) {
       throw new Error("Invalid build-type: " + core.getInput("build-type"), ", must be one of: assemble, bundle");
     }
+
     process.env.BUILD_TYPE = core.getInput("build-type");
     process.env.INCREMENT_BUILD_NUMBER = core.getInput("increment-build-number");
+    
     if (core.getInput("upload-to-play-store") === "true") {
       if (!core.getInput("package-name")) {
         throw new Error("package-name is required when uploading to play store");
@@ -41,6 +43,7 @@ async function run() {
     process.env.PROJECT_PATH = core.getInput("project-path");
     process.env.RUBY_VERSION = core.getInput("ruby-version");
     process.env.UPLOAD_TO_PLAY_STORE = core.getInput("upload-to-play-store");
+
     await exec.exec(`bash ${__dirname}/../build.sh`);
   } catch (error) {
     core.setFailed(error.message);

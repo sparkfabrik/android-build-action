@@ -20,6 +20,7 @@ if [ -n "${RUBY_VERSION}" ]; then
 
     rvm -v
     rvm --default use ${RUBY_VERSION}
+    echo "Running ruby with version: ${RUBY_VERSION}"
 fi
 
 # If the variable BUNDLER_VERSION is set, then install bundler with selected version
