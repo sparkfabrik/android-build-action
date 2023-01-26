@@ -25,32 +25,22 @@ async function run() {
         throw new Error("Missing json-key-data");
       }
     }
-
-    process.env.BUNDLER_VERSION = core.getInput("bundler-version");
-    console.log(process.env);
-    console.log(process.env.BUNDLER_VERSION);
-    if (!process.env.BUNDLER_VERSION) {
-      throw new Error("Missing bundler version");
-    }
-
-    // process.env.RUBY_VERSION = core.getInput("ruby-version");
-    // if (!process.env.RUBY_VERSION) {
-    //   throw new Error("Missing ruby version");
-    // }
     
-    process.env.UPLOAD_TO_PLAY_STORE = core.getInput("upload-to-play-store");
-    process.env.PACKAGE_NAME = core.getInput("package-name");
-    process.env.KEYSTORE_CONTENT = core.getInput("keystore-content");
-    process.env.KEYSTORE_PASSWORD = core.getInput("keystore-password");
-    process.env.KEYSTORE_ALIAS = core.getInput("keystore-alias");
-    process.env.PLAY_STORE_JSON_KEY_DATA = core.getInput("json-key-data");
-    process.env.PROJECT_PATH = core.getInput("project-path");
-    process.env.OUTPUT_PATH = core.getInput("output-path");
-    process.env.GRADLE_TASK = core.getInput("gradle-task");
+    process.env.BROWSERSTACK_ACCESS_KEY = core.getInput("browserstack-access-key");
     process.env.BROWSERSTACK_UPLOAD = core.getInput("browserstack-upload");
     process.env.BROWSERSTACK_USERNAME = core.getInput("browserstack-username");
-    process.env.BROWSERSTACK_ACCESS_KEY = core.getInput("browserstack-access-key");
+    process.env.BUNDLER_VERSION = core.getInput("bundler-version");
     process.env.FASTLANE_ENV = core.getInput("fastlane-env");
+    process.env.GRADLE_TASK = core.getInput("gradle-task");
+    process.env.KEYSTORE_ALIAS = core.getInput("keystore-alias");
+    process.env.KEYSTORE_CONTENT = core.getInput("keystore-content");
+    process.env.KEYSTORE_PASSWORD = core.getInput("keystore-password");
+    process.env.OUTPUT_PATH = core.getInput("output-path");
+    process.env.PACKAGE_NAME = core.getInput("package-name");
+    process.env.PLAY_STORE_JSON_KEY_DATA = core.getInput("json-key-data");
+    process.env.PROJECT_PATH = core.getInput("project-path");
+    process.env.RUBY_VERSION = core.getInput("ruby-version");
+    process.env.UPLOAD_TO_PLAY_STORE = core.getInput("upload-to-play-store");
     await exec.exec(`bash ${__dirname}/../build.sh`);
   } catch (error) {
     core.setFailed(error.message);
