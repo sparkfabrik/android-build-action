@@ -27,6 +27,8 @@ async function run() {
     }
 
     process.env.BUNDLER_VERSION = core.getInput("bundler-version");
+    console.log(process.env);
+    console.log(process.env.BUNDLER_VERSION);
     if (!process.env.BUNDLER_VERSION) {
       throw new Error("Missing bundler version");
     }
