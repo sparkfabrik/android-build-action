@@ -7,7 +7,13 @@ if [ -n "${KEYSTORE_CONTENT}" ]; then
     echo $KEYSTORE_CONTENT | base64 --decode > "keystore.jks"
 fi
 
-ruby -v
+sudo apt-get install software-properties-common
+sudo apt-add-repository -y ppa:rael-gc/rvm
+sudo apt-get update
+sudo apt-get install rvm
+
+. ~/.rvm/scripts/rvm
+
 rvm -v
 
 # If the variable BUNDLER_VERSION is set, then install bundler with that specific version
