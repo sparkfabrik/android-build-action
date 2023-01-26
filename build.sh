@@ -18,9 +18,10 @@ if [ -n "${RUBY_VERSION}" ]; then
 
     source /etc/profile.d/rvm.sh
 
+    sudo rvm get stable
     rvm -v && ruby -v
-    rvm install ${RUBY_VERSION}
-    rvm use ${RUBY_VERSION}
+    sudo rvm install ${RUBY_VERSION}
+    sudo rvm use ${RUBY_VERSION}
     ruby -v
     echo "Running ruby with version: ${RUBY_VERSION}"
     ruby -v
