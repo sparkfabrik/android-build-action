@@ -7,8 +7,8 @@ if [ -n "${KEYSTORE_CONTENT}" ]; then
     echo $KEYSTORE_CONTENT | base64 --decode > "keystore.jks"
 fi
 
-echo ruby --version
-echo rvm --version
+ruby -v
+rvm -v
 
 # If the variable BUNDLER_VERSION is set, then install bundler with that specific version
 # otherwise use latest
