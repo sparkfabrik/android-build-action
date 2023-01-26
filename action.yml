@@ -66,6 +66,14 @@ inputs:
     description: "Specify the bundler version you wish to use"
     required: false
 runs:
-  using: "node16"
-  using: "ruby${{ inputs.ruby-version }}"
+  using: "composite"
+  steps:
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 16
+
+    if: ${{ INPUT_RUBY_VERSION }}
+    - uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: ${{ INPUT_RUBY_VERSION }}
   main: "dist/index.js"
