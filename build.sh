@@ -21,6 +21,7 @@ if [ -n "${RUBY_VERSION}" ]; then
     rvm -v && ruby -v
     rvm install ${RUBY_VERSION}
     rvm use ${RUBY_VERSION}
+    ruby -v
     echo "Running ruby with version: ${RUBY_VERSION}"
     ruby -v
 fi
@@ -29,7 +30,7 @@ fi
 # otherwise use latest
 if [ -n "${BUNDLER_VERSION}" ]; then
     echo "Running bundler with version: ${BUNDLER_VERSION}"
-    sudo gem install bundler:${BUNDLER_VERSION} -NV
+    rvm gem install bundler:${BUNDLER_VERSION} -NV
 else
     sudo gem install bundler -NV
 fi
