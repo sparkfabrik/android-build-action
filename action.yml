@@ -73,5 +73,5 @@ runs:
         node-version: 16
     - uses: ruby/setup-ruby@v1
       with:
-        ruby-version: ${{ inputs.ruby-version }} || 3.0.0
+        ruby-version: ${{ inputs.ruby-version }}
   main: "dist/index.js"
