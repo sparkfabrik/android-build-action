@@ -7,8 +7,18 @@ if [ -n "${KEYSTORE_CONTENT}" ]; then
     echo $KEYSTORE_CONTENT | base64 --decode > "keystore.jks"
 fi
 
-echo "Running bundler with version: ${BUNDLER_VERSION}"
-sudo gem install bundler -NV -v ${BUNDLER_VERSION}
+echo ruby --version
+echo rvm --version
+
+# If the variable BUNDLER_VERSION is set, then install bundler with that specific version
+# otherwise use latest
+if [ -n "${BUNDLER_VERSION}" ]; then
+    echo "Running bundler with version: ${BUNDLER_VERSION}"
+    sudo gem install bundler -NV -v ${BUNDLER_VERSION}
+else
+    sudo gem install bundler -NV
+fi
+
 
 script_path=$(cd $(dirname ${0}); pwd)
 cp -r ${script_path}/fastlane ./
