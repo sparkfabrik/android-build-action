@@ -18,10 +18,11 @@ if [ -n "${RUBY_VERSION}" ]; then
 
     source /etc/profile.d/rvm.sh
 
-    rvm -v
+    rvm -v && ruby -v
     rvm install ${RUBY_VERSION}
-    rvm --default use ${RUBY_VERSION}
+    # rvm --default use ${RUBY_VERSION}
     echo "Running ruby with version: ${RUBY_VERSION}"
+    ruby -v
 fi
 
 # If the variable BUNDLER_VERSION is set, then install bundler with selected version
