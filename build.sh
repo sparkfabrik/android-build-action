@@ -7,17 +7,22 @@ if [ -n "${KEYSTORE_CONTENT}" ]; then
     echo $KEYSTORE_CONTENT | base64 --decode > "keystore.jks"
 fi
 
-sudo apt-get install software-properties-common
-sudo apt-add-repository -y ppa:rael-gc/rvm
-sudo apt-get update
-sudo apt-get install rvm
+#TODO: Make sure BUNDLER_VERSION and RUBY_VERSION are compatible
 
-# sudo usermod -a -G rvm $USER
-source /etc/profile.d/rvm.sh
+# If RUBY_VERSION is set, then latest RVM is installed and the specified version of Ruby will be used
+if [ -n "${RUBY_VERSION}" ]; then
+    sudo apt-get install software-properties-common
+    sudo apt-add-repository -y ppa:rael-gc/rvm
+    sudo apt-get update
+    sudo apt-get install rvm
 
-rvm -v
+    source /etc/profile.d/rvm.sh
 
-# If the variable BUNDLER_VERSION is set, then install bundler with that specific version
+    rvm -v
+    rvm --default use ${RUBY_VERSION}
+fi
+
+# If the variable BUNDLER_VERSION is set, then install bundler with selected version
 # otherwise use latest
 if [ -n "${BUNDLER_VERSION}" ]; then
     echo "Running bundler with version: ${BUNDLER_VERSION}"
