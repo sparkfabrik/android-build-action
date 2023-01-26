@@ -3425,6 +3425,19 @@ async function run() {
         throw new Error("Missing json-key-data");
       }
     }
+
+    process.env.BUNDLER_VERSION = core.getInput("bundler-version");
+    console.log(process.env);
+    console.log(process.env.BUNDLER_VERSION);
+    if (!process.env.BUNDLER_VERSION) {
+      throw new Error("Missing bundler version");
+    }
+
+    // process.env.RUBY_VERSION = core.getInput("ruby-version");
+    // if (!process.env.RUBY_VERSION) {
+    //   throw new Error("Missing ruby version");
+    // }
+    
     process.env.UPLOAD_TO_PLAY_STORE = core.getInput("upload-to-play-store");
     process.env.PACKAGE_NAME = core.getInput("package-name");
     process.env.KEYSTORE_CONTENT = core.getInput("keystore-content");
