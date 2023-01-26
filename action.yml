@@ -68,10 +68,12 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - uses: actions/setup-node@v3
+    - id: "SETUP NODE"
+      uses: actions/setup-node@v3
       with:
         node-version: 16
-    - uses: ruby/setup-ruby@v1
+    - id: "SETUP-RUBY"
+      uses: ruby/setup-ruby@v1
       with:
         ruby-version: ${{ inputs.ruby-version }}
   main: "dist/index.js"
