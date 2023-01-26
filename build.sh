@@ -19,8 +19,8 @@ if [ -n "${RUBY_VERSION}" ]; then
     source /etc/profile.d/rvm.sh
 
     rvm -v && ruby -v
-    # rvm install ${RUBY_VERSION}
-    # rvm --default use ${RUBY_VERSION}
+    rvm install ${RUBY_VERSION}
+    rvm use ${RUBY_VERSION}
     echo "Running ruby with version: ${RUBY_VERSION}"
     ruby -v
 fi
