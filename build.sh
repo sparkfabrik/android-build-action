@@ -11,20 +11,36 @@ fi
 
 # If RUBY_VERSION is set, then latest RVM is installed and the specified version of Ruby will be used
 if [ -n "${RUBY_VERSION}" ]; then
-    sudo apt-get install software-properties-common
-    sudo apt-add-repository -y ppa:rael-gc/rvm
-    sudo apt-get update
-    sudo apt-get install rvm
+    sudo apt-get update 
+    sudo apt-get install git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libxml2-dev libxslt1-dev libcurl4-openssl-dev libffi-dev
+    
+    git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+    echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
+    echo 'eval "$(rbenv init -)"' >> ~/.bashrc
+    exec $SHELL
+    
+    git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
+    echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> ~/.bashrc
+    exec $SHELL
 
-    source /etc/profile.d/rvm.sh
+    rbenv install ${RUBY_VERSION}
+    rbenv global ${RUBY_VERSION}
+    ruby -v
 
-    sudo rvm get stable
-    rvm -v && ruby -v
-    sudo rvm install ${RUBY_VERSION}
-    sudo rvm use ${RUBY_VERSION}
-    ruby -v
-    echo "Running ruby with version: ${RUBY_VERSION}"
-    ruby -v
+    # sudo apt-get install software-properties-common
+    # sudo apt-add-repository -y ppa:rael-gc/rvm
+    # sudo apt-get update
+    # sudo apt-get install rvm
+
+    # source /etc/profile.d/rvm.sh
+
+    # sudo rvm get stable
+    # sudo rvm -v && ruby -v
+    # sudo rvm install ${RUBY_VERSION}
+    # sudo rvm use ${RUBY_VERSION}
+    # ruby -v
+    # echo "Running ruby with version: ${RUBY_VERSION}"
+    # ruby -v
 fi
 
 # If the variable BUNDLER_VERSION is set, then install bundler with selected version
@@ -32,6 +48,7 @@ fi
 if [ -n "${BUNDLER_VERSION}" ]; then
     echo "Running bundler with version: ${BUNDLER_VERSION}"
     gem install bundler:2.3.26 -NV
+    rbenv rehash
 else
     gem install bundler -NV
 fi
