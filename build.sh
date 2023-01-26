@@ -12,10 +12,8 @@ sudo apt-add-repository -y ppa:rael-gc/rvm
 sudo apt-get update
 sudo apt-get install rvm
 
-sudo usermod -a -G rvm $USER
-echo 'source "/etc/profile.d/rvm.sh"' >> ~/.bashrc
-
-source ~/.bashrc
+# sudo usermod -a -G rvm $USER
+source /etc/profile.d/rvm.sh
 
 rvm -v
 
