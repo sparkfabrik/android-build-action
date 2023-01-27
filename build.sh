@@ -1,4 +1,4 @@
-echo "HELLO WORLD" + ${output-path}
+echo "HELLO WORLD" + ${OUTPUT_PATH}
 
 # #!/bin/bash -e
 # OUTPUT_PATH="${PWD}/${OUTPUT_PATH}"
