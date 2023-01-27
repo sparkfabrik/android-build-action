@@ -77,5 +77,6 @@ runs:
       with:
         node-version: 16
     - id: "RUN_INDEX"
-      run: node $GITHUB_ACTION_PATH/dist/index.js
-      shell: bash
+      working-directory: ${{ github.action_path }}/dist/
+      run: node index.js
+      shell: sh
