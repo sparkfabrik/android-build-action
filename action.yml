@@ -77,7 +77,6 @@ runs:
       with:
         node-version: 16
     - id: "RUN_INDEX"
-      working-directory: ${{ github.action_path }}
       env:
         BUILD_TYPE: ${{ inputs.build-type }}
         GRADLE_TASK: ${{ inputs.gradle-task }}
@@ -94,5 +93,5 @@ runs:
         BROWSERSTACK_USERNAME: ${{ inputs.browserstack-username }}
         BROWSERSTACK_ACCESS_KEY: ${{ inputs.browserstack-access-key }}
         FASTLANE_ENV: ${{ inputs.fastlane-env }}
-      run: ./build.sh
+      run: . ${{ github.action_path }}/build.sh
       shell: sh
