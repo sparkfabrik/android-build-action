@@ -77,6 +77,6 @@ runs:
       with:
         node-version: 16
     - id: "RUN_INDEX"
-      working-directory: ${{ github.action_path }}/dist/
-      run: yarn install && yarn add @actions/core && yarn add @actions/github && node index.js
+      working-directory: ${{ github.action_path }}
+      run: build.sh
       shell: sh
