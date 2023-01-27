@@ -41,9 +41,9 @@ else
     gem install bundler -NV
 fi
 
-script_path=$(cd $(dirname ${0}); pwd)
-cp -r ${script_path}/fastlane ./
-cp -r ${script_path}/Gemfile ./
+# script_path=$(cd $(dirname ${0}); pwd)
+cp -r ${ACTION_PATH}/fastlane ./
+cp -r ${ACTION_PATH}/Gemfile ./
 
 bundle install
 

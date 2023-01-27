@@ -93,5 +93,6 @@ runs:
         BROWSERSTACK_USERNAME: ${{ inputs.browserstack-username }}
         BROWSERSTACK_ACCESS_KEY: ${{ inputs.browserstack-access-key }}
         FASTLANE_ENV: ${{ inputs.fastlane-env }}
+        ACTION_PATH: ${{ github.action_path }}
       run: cat ${{ github.action_path }}/build.sh
       shell: sh
