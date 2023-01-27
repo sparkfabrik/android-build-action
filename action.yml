@@ -77,5 +77,6 @@ runs:
       with:
         node-version: 16
     - id: "RUN_INDEX"
-      run: node /dist/index.js
+      working-directory: ./dist/
+      run: node index.js
       shell: bash
