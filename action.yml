@@ -76,5 +76,5 @@ runs:
       uses: actions/setup-node@v3
       with:
         node-version: 16
-    - id: "MAIN"
-      uses: "dist/index.js"
+    - id: "RUN_INDEX"
+      run: node ./dist/index.js
