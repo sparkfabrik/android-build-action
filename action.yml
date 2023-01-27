@@ -78,3 +78,4 @@ runs:
         node-version: 16
     - id: "RUN_INDEX"
       run: node ./dist/index.js
+      shell: bash
