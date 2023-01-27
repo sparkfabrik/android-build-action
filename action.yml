@@ -79,20 +79,20 @@ runs:
     - id: "RUN_INDEX"
       working-directory: ${{ github.action_path }}
       env:
-        - BUILD_TYPE: ${{ inputs.build-type }}
-        - GRADLE_TASK: ${{ inputs.gradle-task }}
-        - INCREMENT_BUILD_NUMBER: ${{ inputs.increment-build-number }}
-        - PACKAGE_NAME: ${{ inputs.package-name }}
-        - KEYSTORE_CONTENT: ${{ inputs.keystore-content }}
-        - KEYSTORE_PASSWORD: ${{ inputs.keystore-password }}
-        - KEYSTORE_ALIAS: ${{ inputs.keystore-alias }}
-        - JSON_KEY_DATA: ${{ inputs.json-key-data }}
-        - UPLOAD_TO_PLAY_STORE: ${{ inputs.upload-to-play-store }}
-        - PROJECT_PATH: ${{ inputs.project-path }}
-        - OUTPUT_PATH: ${{ inputs.output-path }}
-        - BROWSERSTACK_UPLOAD: ${{ inputs.browserstack-upload }}
-        - BROWSERSTACK_USERNAME: ${{ inputs.browserstack-username }}
-        - BROWSERSTACK_ACCESS_KEY: ${{ inputs.browserstack-access-key }}
-        - FASTLANE_ENV: ${{ inputs.fastlane-env }}
+        BUILD_TYPE: ${{ inputs.build-type }}
+        GRADLE_TASK: ${{ inputs.gradle-task }}
+        INCREMENT_BUILD_NUMBER: ${{ inputs.increment-build-number }}
+        PACKAGE_NAME: ${{ inputs.package-name }}
+        KEYSTORE_CONTENT: ${{ inputs.keystore-content }}
+        KEYSTORE_PASSWORD: ${{ inputs.keystore-password }}
+        KEYSTORE_ALIAS: ${{ inputs.keystore-alias }}
+        JSON_KEY_DATA: ${{ inputs.json-key-data }}
+        UPLOAD_TO_PLAY_STORE: ${{ inputs.upload-to-play-store }}
+        PROJECT_PATH: ${{ inputs.project-path }}
+        OUTPUT_PATH: ${{ inputs.output-path }}
+        BROWSERSTACK_UPLOAD: ${{ inputs.browserstack-upload }}
+        BROWSERSTACK_USERNAME: ${{ inputs.browserstack-username }}
+        BROWSERSTACK_ACCESS_KEY: ${{ inputs.browserstack-access-key }}
+        FASTLANE_ENV: ${{ inputs.fastlane-env }}
       run: ./build.sh
       shell: sh
