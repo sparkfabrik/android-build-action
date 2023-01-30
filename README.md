@@ -44,7 +44,7 @@ Specify the env that fastlane should load.
 ## Example usage
 
 ```yaml
-- uses: sparkfabrik/android-build-action@v1.0.0
+- uses: sparkfabrik/android-build-action@v1.3.1
   with:
     project-path: android
     output-path: my-app.apk
