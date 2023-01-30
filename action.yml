@@ -95,5 +95,6 @@ runs:
         BROWSERSTACK_ACCESS_KEY: ${{ inputs.browserstack-access-key }}
         FASTLANE_ENV: ${{ inputs.fastlane-env }}
         ACTION_PATH: ${{ github.action_path }}
+        BUNDLER_VERSION: ${{ inputs.bundler-version }}
       run: . ${{ github.action_path }}/build.sh
       shell: sh
