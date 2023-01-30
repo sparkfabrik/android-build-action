@@ -24,7 +24,7 @@ if [ "${UPLOAD_TO_PLAY_STORE}" == true ]; then
     fi
 fi
 
-echo PLAY_STORE_JSON_KEY_DATA=${JSON_KEY_DATA}
+export PLAY_STORE_JSON_KEY_DATA=${JSON_KEY_DATA}
 OUTPUT_PATH="${PWD}/${OUTPUT_PATH}"
 
 # If the variable KEYSTORE_CONTENT is set, then the keystore is created from the content of the variable.
