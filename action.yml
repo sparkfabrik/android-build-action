@@ -1,9 +1,10 @@
 name: "Build Android App"
 author: "SparkFabrik"
 branding:
-  icon: 'smartphone'
-  color: 'green'
+  icon: "smartphone"
+  color: "green"
 description: "Build Android (gradle), export .apk or .aab, optional upload to Play Store, optional upload to BrowserStack App Live."
+
 inputs:
   build-type:
     description: "You can build an unsigned APK (assemble) or a signed AAB (bundle)."
@@ -55,6 +56,44 @@ inputs:
     description: "Browserstack access key (required if browserstack-upload == true)"
     required: false
     default: ""
+  fastlane-env:
+    description: "Name of the env file name to pass to fastlane --env"
+    required: false
+  ruby-version:
+    description: "Specify the ruby version you wish to use"
+    required: false
+    default: "head"
+  bundler-version:
+    description: "Specify the bundler version you wish to use"
+    required: false
 runs:
-  using: "node16"
-  main: "dist/index.js"
+  using: "composite"
+  steps:
+    - id: "SETUP_RUBY"
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: ${{ inputs.ruby-version }}
+    - id: "SETUP_NODE"
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16
+    - id: "RUN_INDEX"
+      env:
+        BUILD_TYPE: ${{ inputs.build-type }}
+        GRADLE_TASK: ${{ inputs.gradle-task }}
+        INCREMENT_BUILD_NUMBER: ${{ inputs.increment-build-number }}
+        PACKAGE_NAME: ${{ inputs.package-name }}
+        KEYSTORE_CONTENT: ${{ inputs.keystore-content }}
+        KEYSTORE_PASSWORD: ${{ inputs.keystore-password }}
+        KEYSTORE_ALIAS: ${{ inputs.keystore-alias }}
+        JSON_KEY_DATA: ${{ inputs.json-key-data }}
+        UPLOAD_TO_PLAY_STORE: ${{ inputs.upload-to-play-store }}
+        PROJECT_PATH: ${{ inputs.project-path }}
+        OUTPUT_PATH: ${{ inputs.output-path }}
+        BROWSERSTACK_UPLOAD: ${{ inputs.browserstack-upload }}
+        BROWSERSTACK_USERNAME: ${{ inputs.browserstack-username }}
+        BROWSERSTACK_ACCESS_KEY: ${{ inputs.browserstack-access-key }}
+        FASTLANE_ENV: ${{ inputs.fastlane-env }}
+        ACTION_PATH: ${{ github.action_path }}
+      run: . ${{ github.action_path }}/build.sh
+      shell: sh
