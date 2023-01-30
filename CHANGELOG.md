@@ -1,6 +1,6 @@
 # Change Log
 
-## [1.3.0] - 2023-30-01
+## [1.3.x] - 2023-30-01
 
 Added optional Ruby and bundler version
 
