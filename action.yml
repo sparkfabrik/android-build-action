@@ -61,7 +61,7 @@ inputs:
     required: false
   ruby-version:
     description: "Specify the ruby version you wish to use"
-    default: ""
+    default: "head"
   bundler-version:
     description: "Specify the bundler version you wish to use"
     required: false
