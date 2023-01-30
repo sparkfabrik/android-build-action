@@ -73,6 +73,7 @@ runs:
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: ${{ inputs.ruby-version }}
+        bundler: ${{ inputs.bundler-version }} || 'latest'
     - id: "SETUP_NODE"
       uses: actions/setup-node@v3
       with:
@@ -95,6 +96,5 @@ runs:
         BROWSERSTACK_ACCESS_KEY: ${{ inputs.browserstack-access-key }}
         FASTLANE_ENV: ${{ inputs.fastlane-env }}
         ACTION_PATH: ${{ github.action_path }}
-        BUNDLER_VERSION: ${{ inputs.bundler-version }}
       run: . ${{ github.action_path }}/build.sh
       shell: sh
