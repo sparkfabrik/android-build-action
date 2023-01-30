@@ -37,6 +37,10 @@ Ruby version to be used.
 
 Bundler version to be used.
 
+### `fastlane-env`
+
+Specify the env that fastlane should load.
+
 ## Example usage
 
 ```yaml
@@ -49,8 +53,9 @@ Bundler version to be used.
     browserstack-access-key: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
     ruby-version: "2.7.5"
     bundler-version: "2.3.26"
+    fastlane-env: "debug"
 ```
 
 ## Contributions Welcome!
 
-If you have any other inputs you'd like to add, feel free to create PR. Remember to run `yarn install` and `yarn bundle` if you make changes to the index.js.
+If you have any other inputs you'd like to add, feel free to create PR.
