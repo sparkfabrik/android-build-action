@@ -1,5 +1,6 @@
 #!/bin/bash -e
 
+echo "BUILD TYPE: ${BUILD_TYPE}"
 if [ "${BUILD_TYPE}" != "assemble" || "${BUILD_TYPE}" != "bundle" ]; then
     echo "Invalid build-type: " ${BUILD_TYPE}
     exit 1
@@ -32,20 +33,6 @@ if [ -n "${KEYSTORE_CONTENT}" ]; then
     echo "Creating keystore from content"
     echo $KEYSTORE_CONTENT | base64 --decode > "keystore.jks"
 fi
-
-# If the variable BUNDLER_VERSION is set, then install bundler with selected version
-# otherwise use latest
-if [ -n "${BUNDLER_VERSION}" ]; then
-    echo "Running bundler with version: ${BUNDLER_VERSION}"
-    gem install bundler:${BUNDLER_VERSION} -NV
-else
-    gem install bundler -NV
-fi
-
-cp -r ${ACTION_PATH}/fastlane ./
-cp -r ${ACTION_PATH}/Gemfile ./
-
-bundle install
 
 # If the variable FASTLANE_ENV is set then run fastlane with the --env equal to the variable.
 if [ -n "${FASTLANE_ENV}" ]; then
