@@ -65,7 +65,7 @@ inputs:
     default: "head"
   bundler-version:
     description: "Specify the bundler version you wish to use"
-    default: "latest"
+    default: "2.3"
     required: false
 runs:
   using: "composite"
