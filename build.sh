@@ -1,12 +1,9 @@
 #!/bin/bash -e
-
-echo "BUILD TYPE: ${BUILD_TYPE}"
 if [ "${BUILD_TYPE}" != "assemble" -a "${BUILD_TYPE}" != "bundle" ]; then
     echo "Invalid build-type: " ${BUILD_TYPE}
     exit 1
 fi
 
-echo "${UPLOAD_TO_PLAY_STORE}"
 if [ "${UPLOAD_TO_PLAY_STORE}" = "true" ]; then
     if [ -n "${PACKAGE_NAME}" ]; then
         echo "package-name is required when uploading to play store"
