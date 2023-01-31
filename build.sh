@@ -34,11 +34,13 @@ if [ -n "${KEYSTORE_CONTENT}" ]; then
     echo $KEYSTORE_CONTENT | base64 --decode > "keystore.jks"
 fi
 
+fastlane install_plugins
+
 # If the variable FASTLANE_ENV is set then run fastlane with the --env equal to the variable.
 if [ -n "${FASTLANE_ENV}" ]; then
     echo "Running fastlane with environment: ${FASTLANE_ENV}"
-    fastlane --env ${FASTLANE_ENV} android $BUILD_TYPE
+    bundle exec fastlane --env ${FASTLANE_ENV} android $BUILD_TYPE
 else
     echo "Running fastlane"
-    fastlane android $BUILD_TYPE
+    bundle exec fastlane android $BUILD_TYPE
 fi
