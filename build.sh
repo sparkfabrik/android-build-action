@@ -34,6 +34,7 @@ if [ -n "${KEYSTORE_CONTENT}" ]; then
     echo $KEYSTORE_CONTENT | base64 --decode > "keystore.jks"
 fi
 
+ruby --version
 bundle exec fastlane install_plugins
 
 # If the variable FASTLANE_ENV is set then run fastlane with the --env equal to the variable.
