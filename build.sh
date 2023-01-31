@@ -35,15 +35,20 @@ if [ -n "${KEYSTORE_CONTENT}" ]; then
     echo $KEYSTORE_CONTENT | base64 --decode > "keystore.jks"
 fi
 
-
-gem install bundler -NV
+# If the variable BUNDLER_VERSION is set, then install bundler with selected version
+# otherwise use latest
+if [ -n "${BUNDLER_VERSION}" ]; then
+    echo "Running bundler with version: ${BUNDLER_VERSION}"
+    gem install bundler:${BUNDLER_VERSION} -NV
+else
+    gem install bundler -NV
+fi
 
 cp -r ${ACTION_PATH}/fastlane ./
 cp -r ${ACTION_PATH}/Gemfile ./
 
 bundle install
 
-ruby --version
 bundle exec fastlane install_plugins
 
 # If the variable FASTLANE_ENV is set then run fastlane with the --env equal to the variable.
