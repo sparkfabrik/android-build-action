@@ -47,7 +47,8 @@ fi
 cp -r ${ACTION_PATH}/fastlane ./
 cp -r ${ACTION_PATH}/Gemfile ./
 
-bundle exec fastlane install_plugins
+bundle install
+# bundle exec fastlane install_plugins
 
 # If the variable FASTLANE_ENV is set then run fastlane with the --env equal to the variable.
 if [ -n "${FASTLANE_ENV}" ]; then
