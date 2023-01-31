@@ -74,6 +74,7 @@ runs:
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: ${{ inputs.ruby-version }}
+        bundler: ${{ inputs.bundler-version }}
     - id: "SETUP_NODE"
       uses: actions/setup-node@v3
       with:
