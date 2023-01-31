@@ -35,6 +35,14 @@ if [ -n "${KEYSTORE_CONTENT}" ]; then
     echo $KEYSTORE_CONTENT | base64 --decode > "keystore.jks"
 fi
 
+
+gem install bundler -NV
+
+cp -r ${ACTION_PATH}/fastlane ./
+cp -r ${ACTION_PATH}/Gemfile ./
+
+bundle install
+
 ruby --version
 bundle exec fastlane install_plugins
 
