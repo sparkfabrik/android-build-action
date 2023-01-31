@@ -4,6 +4,11 @@ This action build Android project, export .apk file as GitHub artifact, with opt
 
 Tested with Ionic, React Native and native android projects.
 
+# New in 1.3.3
+
+- Now `gemfile.lock` will be checked and if it contains a `BUNDLED WITH` section it will install and use that specific version of bundler.
+- The default value of `bundler-version` is now set to `2.3` so that the fallback value is compatible with fastlane plugins.
+
 ## New in 1.3.2
 
 - Bundler is now installed with `setup-ruby` action.
@@ -48,7 +53,7 @@ Specify the env that fastlane should load.
 ## Example usage
 
 ```yaml
-- uses: sparkfabrik/android-build-action@v1.3.2
+- uses: sparkfabrik/android-build-action@v1.3.3
   with:
     project-path: android
     output-path: my-app.apk

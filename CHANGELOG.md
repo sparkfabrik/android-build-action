@@ -1,5 +1,10 @@
 # Change Log
 
+## [1.3.3] - 2023-31-01
+
+Now `gemfile.lock` will be checked and if it contains a `BUNDLED WITH` section it will install and use that specific version of bundler.
+The default value of `bundler-version` is now set to `2.3` so that the fallback value is compatible with fastlane plugins used by the action.
+
 ## [1.3.2] - 2023-30-01
 
 Bundler is now configured with `setup-ruby`.
