@@ -6,7 +6,7 @@ if [ "${BUILD_TYPE}" != "assemble" -a "${BUILD_TYPE}" != "bundle" ]; then
     exit 1
 fi
 
-if [ "${UPLOAD_TO_PLAY_STORE}" == true ]; then
+if [ -n "${UPLOAD_TO_PLAY_STORE}"]; then
     if [ -n "${PACKAGE_NAME}" ]; then
         echo "package-name is required when uploading to play store"
         exit 2
