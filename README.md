@@ -4,6 +4,10 @@ This action build Android project, export .apk file as GitHub artifact, with opt
 
 Tested with Ionic, React Native and native android projects.
 
+## New in 1.3.2
+
+- Bundler is now installed with `setup-ruby` action.
+
 ## New in 1.3.0
 
 - Optional Ruby version: using the `ruby-version` property you can specify Ruby version you wish to use. If missing latest Ruby version available will be used.

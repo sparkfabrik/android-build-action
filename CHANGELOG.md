@@ -1,8 +1,16 @@
 # Change Log
 
-## [1.3.x] - 2023-30-01
+## [1.3.2] - 2023-30-01
 
-Added optional Ruby and bundler version
+Bundler is now configured with `setup-ruby`.
+
+## [1.3.1] - 2023-30-01
+
+Minor README.md updates.
+
+## [1.3.0] - 2023-30-01
+
+Added optional Ruby and bundler version.
 
 ### Added
 
