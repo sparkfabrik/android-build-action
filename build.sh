@@ -1,7 +1,7 @@
 #!/bin/bash -e
 
 echo "BUILD TYPE: ${BUILD_TYPE}"
-if [ "${BUILD_TYPE}" != "assemble" || "${BUILD_TYPE}" != "bundle" ]; then
+if [ "${BUILD_TYPE}" != "assemble" -a "${BUILD_TYPE}" != "bundle" ]; then
     echo "Invalid build-type: " ${BUILD_TYPE}
     exit 1
 fi
