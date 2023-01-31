@@ -4,6 +4,10 @@ This action build Android project, export .apk file as GitHub artifact, with opt
 
 Tested with Ionic, React Native and native android projects.
 
+## New in 1.3.3
+
+- Fix default bundler value.
+
 ## New in 1.3.2
 
 - Bundler is now installed with `setup-ruby` action.
@@ -48,7 +52,7 @@ Specify the env that fastlane should load.
 ## Example usage
 
 ```yaml
-- uses: sparkfabrik/android-build-action@v1.3.2
+- uses: sparkfabrik/android-build-action@v1.3.3
   with:
     project-path: android
     output-path: my-app.apk

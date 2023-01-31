@@ -1,6 +1,10 @@
 # Change Log
 
-## [1.3.2] - 2023-30-01
+## [1.3.3] - 2023-31-01
+
+Fix bundler default value.
+
+## [1.3.2] - 2023-31-01
 
 Bundler is now configured with `setup-ruby`.
 
