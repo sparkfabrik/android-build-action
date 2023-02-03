@@ -13,9 +13,9 @@ platform :android do
       flags: "--no-daemon",
     )
 
-    sh("echo", "#{lane_context[SharedValues::GRADLE_APK_OUTPUT_PATH]}")
+    sh("echo #{lane_context[SharedValues::GRADLE_APK_OUTPUT_PATH]}");
     APK_LOCATION = "#{lane_context[SharedValues::GRADLE_APK_OUTPUT_PATH]}"
-    sh("cp", "#{APK_LOCATION}", ENV["OUTPUT_PATH"])
+    sh("cp #{APK_LOCATION} ENV["OUTPUT_PATH"]")
 
     if ENV["BROWSERSTACK_UPLOAD"] == 'true'
       upload_to_browserstack_app_live(
