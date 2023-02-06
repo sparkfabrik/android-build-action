@@ -13,6 +13,8 @@ platform :android do
       flags: "--no-daemon",
     )
 
+    sh("ls")
+
     APK_LOCATION = "#{lane_context[SharedValues::GRADLE_APK_OUTPUT_PATH]}"
     sh("echo #{lane_context[SharedValues::GRADLE_APK_OUTPUT_PATH]}");
     sh("cp #{APK_LOCATION} #{ENV["OUTPUT_PATH"]}")
