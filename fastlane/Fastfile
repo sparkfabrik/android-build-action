@@ -15,7 +15,7 @@ platform :android do
 
     APK_LOCATION = "#{lane_context[SharedValues::GRADLE_APK_OUTPUT_PATH]}"
 
-    if !APK_LOCATION
+    if APK_LOCATION == "" 
       APK_LOCATION = "/../android/app/build/outputs/apk/debug/"
     end
     
