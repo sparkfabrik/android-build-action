@@ -13,9 +13,11 @@ platform :android do
       flags: "--no-daemon",
     )
 
-    sh("cd .. && cd android && cd app && cd build && cd outputs && cd apk && cd debug && ls")
-
     APK_LOCATION = "#{lane_context[SharedValues::GRADLE_APK_OUTPUT_PATH]}"
+    
+    if !APK_LOCATION
+      APK_LOCATION = "/../android/app/build/outputs/apk/debug/"
+    
     sh("echo #{lane_context[SharedValues::GRADLE_APK_OUTPUT_PATH]}");
     sh("cp #{APK_LOCATION} #{ENV["OUTPUT_PATH"]}")
 
