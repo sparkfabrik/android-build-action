@@ -1,5 +1,9 @@
 # Change Log
 
+## [1.3.4] - 2023-08-02
+
+- Fix build.sh input checks when uploading to Play Store
+
 ## [1.3.3] - 2023-31-01
 
 Now `gemfile.lock` will be checked and if it contains a `BUNDLED WITH` section it will install and use that specific version of bundler.
