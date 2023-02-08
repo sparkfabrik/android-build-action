@@ -4,7 +4,7 @@ if [ "${BUILD_TYPE}" != "assemble" -a "${BUILD_TYPE}" != "bundle" ]; then
     exit 1
 fi
 
-echo "${PACKAGE_NAME}"
+echo "package-name: ${PACKAGE_NAME}"
 
 if [ -z "${PACKAGE_NAME}" ]; then
     echo "La variabile è vuota"
