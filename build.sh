@@ -4,14 +4,6 @@ if [ "${BUILD_TYPE}" != "assemble" -a "${BUILD_TYPE}" != "bundle" ]; then
     exit 1
 fi
 
-echo "package-name: ${PACKAGE_NAME}"
-
-if [ -z "${PACKAGE_NAME}" ]; then
-    echo "La variabile è vuota"
-elif ! [ -z "${PACKAGE_NAME}" ]; then
-    echo "La variabile è piena"
-fi
-
 if [ "${UPLOAD_TO_PLAY_STORE}" = "true" ]; then
     if [ -z "${PACKAGE_NAME}" ]; then
         echo "package-name is required when uploading to play store"
