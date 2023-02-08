@@ -4,20 +4,26 @@ if [ "${BUILD_TYPE}" != "assemble" -a "${BUILD_TYPE}" != "bundle" ]; then
     exit 1
 fi
 
+if [ -z "${PACKAGE_NAME}" ]; then
+    echo "La variabile è vuota"
+elif ! [ -z "${PACKAGE_NAME}" ]; then
+    echo "La variabile è piena"
+fi
+
 if [ "${UPLOAD_TO_PLAY_STORE}" = "true" ]; then
-    if [ -n "${PACKAGE_NAME}" ]; then
+    if [ -z "${PACKAGE_NAME}" ]; then
         echo "package-name is required when uploading to play store"
         exit 2
-    elif [ -n "${KEYSTORE_CONTENT}" ]; then
+    elif [ -z "${KEYSTORE_CONTENT}" ]; then
         echo "Missing keystore-content"
         exit 3
-    elif [ -n "${KEYSTORE_PASSWORD}" ]; then
+    elif [ -z "${KEYSTORE_PASSWORD}" ]; then
         echo "Missing keystore-password"
         exit 4
-    elif [ -n "${KEYSTORE_ALIAS}" ]; then
+    elif [ -z "${KEYSTORE_ALIAS}" ]; then
         echo "Missing keystore-alias"
         exit 5
-    elif [ -n "${JSON_KEY_DATA}" ]; then
+    elif [ -z "${JSON_KEY_DATA}" ]; then
         echo "Missing json-key-data"
         exit 6
     fi
