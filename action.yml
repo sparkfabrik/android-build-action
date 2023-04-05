@@ -67,6 +67,14 @@ inputs:
     description: "Specify the bundler version you wish to use"
     default: "2.3"
     required: false
+  release-track:
+    description: "Release track to target"
+    default: "internal"
+    required: false
+  release-status:
+    description: "Status of the release"
+    default: "draft"
+    required: false
 runs:
   using: "composite"
   steps:
@@ -96,6 +104,8 @@ runs:
         BROWSERSTACK_USERNAME: ${{ inputs.browserstack-username }}
         BROWSERSTACK_ACCESS_KEY: ${{ inputs.browserstack-access-key }}
         FASTLANE_ENV: ${{ inputs.fastlane-env }}
+        RELEASE_TRACK: ${{ inputs.release-track }}
+        RELEASE_STATUS: ${{ inputs.release-status }}
         ACTION_PATH: ${{ github.action_path }}
       run: . ${{ github.action_path }}/build.sh
       shell: sh

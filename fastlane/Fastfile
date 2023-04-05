@@ -28,8 +28,8 @@ platform :android do
       upload_to_play_store(
         apk: ENV["OUTPUT_PATH"],
         package_name: ENV["ANDROID_PACKAGE_NAME"],
-        release_status: "draft",
-        track: "internal",
+        release_status: ENV["RELEASE_STATUS"],
+        track: ENV["RELEASE_TRACK"],
         json_key_data: ENV["PLAY_STORE_JSON_KEY_DATA"],
       )
     end
@@ -40,7 +40,7 @@ platform :android do
     if ENV['INCREMENT_BUILD_NUMBER'] == 'true'
       previous_build_number = google_play_track_version_codes(
         package_name: ENV["PACKAGE_NAME"],
-        track: "internal",
+        track: ENV["RELEASE_TRACK"],
         json_key_data: ENV["PLAY_STORE_JSON_KEY_DATA"],
       )[0]
 
@@ -82,8 +82,8 @@ platform :android do
       upload_to_play_store(
         aab: ENV["OUTPUT_PATH"],
         package_name: ENV["PACKAGE_NAME"],
-        release_status: "draft",
-        track: "internal",
+        release_status: ENV["RELEASE_STATUS"],
+        track: ENV["RELEASE_TRACK"],
         json_key_data: ENV["PLAY_STORE_JSON_KEY_DATA"],
       )
     end
