@@ -67,6 +67,10 @@ inputs:
     description: "Specify the bundler version you wish to use"
     default: "2.3"
     required: false
+  version-name:
+    description: "Version name to be used"
+    required: false
+    default: ""
 runs:
   using: "composite"
   steps:
@@ -96,6 +100,7 @@ runs:
         BROWSERSTACK_USERNAME: ${{ inputs.browserstack-username }}
         BROWSERSTACK_ACCESS_KEY: ${{ inputs.browserstack-access-key }}
         FASTLANE_ENV: ${{ inputs.fastlane-env }}
+        VERSION_NAME: ${{ inputs.version-name }}
         ACTION_PATH: ${{ github.action_path }}
       run: . ${{ github.action_path }}/build.sh
       shell: sh

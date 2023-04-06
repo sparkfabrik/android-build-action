@@ -54,6 +54,10 @@ Bundler version to be used.
 
 Specify the env that fastlane should load.
 
+### `version-name`
+
+Version name to be used`.
+
 ## Example usage
 
 ```yaml
