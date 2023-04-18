@@ -54,6 +54,14 @@ Bundler version to be used.
 
 Specify the env that fastlane should load.
 
+### `release-track`
+
+Release track to target. Default `"internal"`.
+
+### `release-status`
+
+Status of the uploaded release. Default `"draft"`.
+
 ## Example usage
 
 ```yaml
