@@ -33,7 +33,9 @@ if [ -n "${KEYSTORE_CONTENT}" ]; then
 fi
 
 cp -r ${ACTION_PATH}/fastlane ./
-cp -r ${ACTION_PATH}/Gemfile ./
+cp ${ACTION_PATH}/Gemfile ./
+
+bundle add fastlane --version ${FASTLANE_VERSION}
 
 bundle install
 
