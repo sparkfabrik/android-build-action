@@ -1,8 +1,14 @@
 # Change Log
 
+## [1.5.0] - 2023-26-05
+- Add `fastlane-version` input.
+
+## [1.4.0] - 2023-18-04
+- Add `release-track` and `release-status` inputs.
+
 ## [1.3.4] - 2023-08-02
 
-- Fix build.sh input checks when uploading to Play Store
+- Fix `build.sh` input checks when uploading to Play Store.
 
 ## [1.3.3] - 2023-31-01
 

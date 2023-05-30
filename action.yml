@@ -60,12 +60,16 @@ inputs:
     description: "Name of the env file name to pass to fastlane --env"
     required: false
   ruby-version:
-    description: "Specify the ruby version you wish to use"
+    description: "Specify the Ruby version you wish to use"
     required: false
     default: "head"
   bundler-version:
-    description: "Specify the bundler version you wish to use"
+    description: "Specify the Bundler version you wish to use"
     default: "2.3"
+    required: false
+  fastlane-version:
+    description: "Specify the Fastlane version you wish to use"
+    default: "2.213.0"
     required: false
   release-track:
     description: "Release track to target"
@@ -103,6 +107,7 @@ runs:
         BROWSERSTACK_UPLOAD: ${{ inputs.browserstack-upload }}
         BROWSERSTACK_USERNAME: ${{ inputs.browserstack-username }}
         BROWSERSTACK_ACCESS_KEY: ${{ inputs.browserstack-access-key }}
+        FASTLANE_VERSION: ${{ inputs.fastlane-version }}
         FASTLANE_ENV: ${{ inputs.fastlane-env }}
         RELEASE_TRACK: ${{ inputs.release-track }}
         RELEASE_STATUS: ${{ inputs.release-status }}
