@@ -56,7 +56,7 @@ Bundler version to be used. Default `"2.3"`.
 
 ### `fastlane-version`
 
-Fastlane version to be used. Default `"2.213.0"`.
+Fastlane version to be used. If not specified, the default value will be used.
 
 ### `fastlane-env`
 
