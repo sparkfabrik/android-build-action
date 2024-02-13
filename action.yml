@@ -118,4 +118,4 @@ runs:
         VERSION_NAME: ${{ inputs.version-name }}
         ACTION_PATH: ${{ github.action_path }}
       run: . ${{ github.action_path }}/build.sh
-      shell: sh
+      shell: bash
