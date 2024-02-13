@@ -36,7 +36,7 @@ Tested with Ionic, React Native and native android projects.
 
 ### `project-path`
 
-**Required** android folder (where `gradlew` is)
+**(Required)** Android folder (where `gradlew` is)
 
 ### `output-path`
 
@@ -48,11 +48,15 @@ Name of the gradle task to run. Default `"assembleDebug"`.
 
 ### `ruby-version`
 
-Ruby version to be used.
+Ruby version to be used. Default `"head"`.
 
 ### `bundler-version`
 
-Bundler version to be used.
+Bundler version to be used. Default `"2.3"`.
+
+### `fastlane-version`
+
+Fastlane version to be used. If not specified, the default value will be used.
 
 ### `fastlane-env`
 
@@ -73,7 +77,7 @@ Version name to be used`.
 ## Example usage
 
 ```yaml
-- uses: sparkfabrik/android-build-action@v1.3.4
+- uses: sparkfabrik/android-build-action@v1.5.0
   with:
     project-path: android
     output-path: my-app.apk
