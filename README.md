@@ -70,6 +70,10 @@ Release track to target. Default `"internal"`.
 
 Status of the uploaded release. Default `"draft"`.
 
+### `version-name`
+
+Version name to be used`.
+
 ## Example usage
 
 ```yaml

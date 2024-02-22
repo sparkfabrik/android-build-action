@@ -79,6 +79,10 @@ inputs:
     description: "Status of the release"
     default: "draft"
     required: false
+  version-name:
+    description: "Version name to be used"
+    required: false
+    default: ""
 runs:
   using: "composite"
   steps:
@@ -111,6 +115,7 @@ runs:
         FASTLANE_ENV: ${{ inputs.fastlane-env }}
         RELEASE_TRACK: ${{ inputs.release-track }}
         RELEASE_STATUS: ${{ inputs.release-status }}
+        VERSION_NAME: ${{ inputs.version-name }}
         ACTION_PATH: ${{ github.action_path }}
       run: . ${{ github.action_path }}/build.sh
-      shell: sh
+      shell: bash

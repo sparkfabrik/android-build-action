@@ -4,3 +4,4 @@
 
 gem 'fastlane-plugin-browserstack'
 gem 'fastlane-plugin-increment_version_code'
+gem 'fastlane-plugin-increment_version_name'

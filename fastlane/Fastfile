@@ -7,6 +7,13 @@ platform :android do
       increment_version_code()
     end
 
+    if !ENV["VERSION_NAME"].empty?
+      increment_version_name(
+        gradle_file_path: ENV["PROJECT_PATH"] + "/app/build.gradle",
+        version_name: ENV["VERSION_NAME"]
+      )
+    end
+
     gradle(
       task: ENV["GRADLE_TASK"],
       project_dir: ENV["PROJECT_PATH"],
@@ -54,6 +61,13 @@ platform :android do
     puts "Gradle task: #{ENV["GRADLE_TASK"]}"
     sh("ls", "-la", "..")
     sh("ls", "-la")
+
+    if !ENV["VERSION_NAME"].empty?
+      increment_version_name(
+        gradle_file_path: ENV["PROJECT_PATH"] + "/app/build.gradle",
+        version_name: ENV["VERSION_NAME"]
+      )
+    end
 
     gradle(
       task: ENV["GRADLE_TASK"],
